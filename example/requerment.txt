@@ -1,0 +1,3 @@
+django-admin startproject example
+python manage.py startapp core
+pip install django-allauth

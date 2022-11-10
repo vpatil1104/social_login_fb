@@ -1,0 +1,28 @@
+{% extends '_base.html' %} {% load socialaccount %}
+
+{% block content %}
+<style type="text/css">
+    body{
+        background-color: #f7fcff;
+    }
+</style>
+<div class="container" style="text-align: center; padding-top: 10%;">
+    <h1>Django Facebook Social Login Example</h1>
+
+    <br /><br />
+
+    {% if user.is_authenticated %}
+        <p style="font-size:25px;">Welcome <strong>{{ user.socialaccount_set.all.0.extra_data.name }}</strong> !!!</p>
+        <br /><br />
+        <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
+    {% else %}
+
+        </a>
+        <a href="{% provider_login_url 'facebook' %}" class="btn btn-primary">
+        <i class="fa fa-facebook fa-fw"></i>
+        <span>Login with Facebook</span>
+        </a>
+  {% endif %}
+</div>
+
+{% endblock content %}
